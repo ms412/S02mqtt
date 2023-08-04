@@ -1,0 +1,18 @@
+#Contents of /etc/systemd/system/S02mqtt.service
+#systemctl daemon-reload
+#systemctl enable S02mqtt.service
+#systemctl start S02mqtt.service
+
+[Unit]
+Description= S0-USB adapter to Mqtt
+After=multi-user.target
+
+[Service]
+Type=idle
+ExecStart=/opt/S02mqtt/S02mqtt.py /opt/S02mqtt/S02mqtt.config
+Restart=on-failure
+RestartSec=5s
+
+
+[Install]
+WantedBy=multi-user.target
